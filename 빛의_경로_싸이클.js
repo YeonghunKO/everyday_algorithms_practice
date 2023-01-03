@@ -57,6 +57,7 @@
   const grid = ['SL', 'LR']; //[16]
   const grid2 = ['R', 'R'];
 
+  console.log([2, 3, 5, 2, 3].sort((a, b) => a - b).slice(0, 2));
   solution(grid);
   /*
   pseudo code
