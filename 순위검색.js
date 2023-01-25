@@ -32,6 +32,7 @@ const table = {
   '-': 7,
 };
 
+// bit형태로 치환하여 비교하기 쉽게 converting함
 function preprocess(rows, is_query = false) {
   const processed_rows = [];
 
@@ -43,6 +44,7 @@ function preprocess(rows, is_query = false) {
     let code = 0;
     console.log(score);
     for (const value of values.slice(0, -1)) {
+      console.log(value);
       if (is_query) {
         code = (code << 3) + (7 - table[value]);
         console.log(code); // Bit flip
@@ -58,16 +60,16 @@ function preprocess(rows, is_query = false) {
 }
 
 function bisect_gt(a, x) {
-  let lo = 0,
-    hi = a.length;
-  while (lo < hi) {
-    let mid = Math.floor((lo + hi) / 2);
-    if (a[mid] < x) lo = mid + 1;
-    else hi = mid;
+  let low = 0,
+    high = a.length;
+  while (low < high) {
+    let mid = Math.floor((low + high) / 2);
+    if (a[mid] < x) low = mid + 1;
+    else high = mid;
   }
   console.log(a);
   console.log(x);
-  return a.length - lo;
+  return a.length - low;
 }
 
 function solution(info, query) {
@@ -103,6 +105,8 @@ function solution(info, query) {
     for (const [icode, iscores] of sorted_info_index) {
       console.log(qcode);
       console.log(icode);
+      // & 연산자는 각각의 자리수의 비트를 곱하여 계산
+      // 각각의 자리수가 하나라도 0이면 0이 된다. 즉, 두개다 1일이어야 1이된다.
       if (!(qcode & icode)) {
         count += bisect_gt(iscores, qscore);
       }
