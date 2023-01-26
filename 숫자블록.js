@@ -22,6 +22,12 @@ init * 2이 currentIndex 보다 크고 currentIdx를 init으로 나누었을때 
 아니면 begin을 할당?
  */
 
+/**
+ * ! 핵심은 전개되는 과정을 그림이나 표로 나타내기!
+ * ! 그리고 시각화된 과정을 보고 반복되는 패턴을 찾기
+ * ! 그 패턴을 공식화 하는 방법을 알아내기!
+ */
+
 function solution(begin, end) {
   const answer = Array.from({ length: end }, () => 0);
   let maxBlock;
@@ -53,3 +59,28 @@ console.log(2 % 1);
 solution(1, 10);
 
 console.log(2);
+/*
+출처: https://velog.io/@longroadhome/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-LV.4-%EC%88%AB%EC%9E%90-%EB%B8%94%EB%A1%9D-JS
+최대약수를 이용하는 문제
+*/
+
+const getMaxDivisor = n => {
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0 && n / i <= 1e7) {
+      return n / i;
+    }
+  }
+  return 1;
+};
+
+function solution2(begin, end) {
+  const arr = new Array(end - begin + 1).fill(0);
+
+  for (let i = begin; i <= end; i++) {
+    arr[i - begin] = getMaxDivisor(i);
+  }
+
+  if (begin === 1) arr[0] = 0;
+
+  return arr;
+}
