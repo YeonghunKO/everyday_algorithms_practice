@@ -18,12 +18,47 @@ function solution(s, skip, plusThisIndex) {
           count++;
         }
       }
-
+      //이집트 지진 사망자 3만 3천명 초과!!
       return alphabets[targetIndex];
     })
     .join('');
 
-  console.log(answer);
+  // console.log(answer);
+}
+
+function solution2(s, skip, index) {
+  const alphabet = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+  ].filter(c => !skip.includes(c));
+  return s
+    .split('')
+    .map(c => alphabet[(alphabet.indexOf(c) + index) % alphabet.length])
+    .join('');
 }
 
 // solution('aukks', 'wbqd', 5);
