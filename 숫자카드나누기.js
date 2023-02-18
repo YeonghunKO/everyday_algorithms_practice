@@ -51,11 +51,10 @@ EX>
  https://cocococo.tistory.com/entry/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4JavaScript-Lv2-%EC%88%AB%EC%9E%90-%EC%B9%B4%EB%93%9C-%EB%82%98%EB%88%84%EA%B8%B0
 */
 function solution(arrayA, arrayB) {
-  var answer = 0;
-
   const a = getDvsr(arrayA, arrayB);
-  console.log(a);
-  return answer;
+  const b = getDvsr(arrayB, arrayA);
+
+  return Math.max(a, b);
 }
 
 function getDvsr(arrayA, arrayB) {
