@@ -4,17 +4,12 @@
  */
 
 function solution(words) {
-  words = words.split(" ");
-
-  for (let i = 0; i < words.length; i++) {
-    if (i === 0 && Number.isInteger(words[i][0])) {
-      continue;
-    }
-
-    words[i] = words[i].replace(words[i][0], words[i][0].toUpperCase());
-  }
-
-  return words.join(" ");
+  return words
+    .split(" ")
+    .map((word) => {
+      return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();
+    })
+    .join(" ");
 }
-
-console.log(solution("for the last week"));
+// solution("for the last week");
+console.log(solution("for the last   week"));
