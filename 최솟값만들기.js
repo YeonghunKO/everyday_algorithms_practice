@@ -1,3 +1,8 @@
+/**
+ *
+ * [1, 4, 2]	[5, 4, 4]	29
+ * [1,2]	[3,4]	10
+ */
 function solution(A, B) {
   var answer = 0;
 
