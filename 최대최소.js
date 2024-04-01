@@ -36,12 +36,15 @@ function solution(numbers) {
     const target = numbers[i];
     min = Math.min(min, target);
     max = Math.max(max, target);
-
-    // console.log("min", min);
-    // console.log("max", max);
   }
 
   return `${min} ${max}`;
+}
+
+function solution2(s) {
+  const arr = s.split(" ");
+
+  return Math.min(...arr) + " " + Math.max(...arr);
 }
 
 solution("-1 -2 -3 -4");
