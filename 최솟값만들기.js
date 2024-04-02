@@ -8,10 +8,11 @@
  * 제일 작은 수와 제일 큰 수를 곱하면 될까??
  *
  */
-function solution(A, B) {
-  var answer = 0;
 
-  return answer;
+function solution(A, B) {
+  A.sort((a, b) => a - b);
+  B.sort((a, b) => b - a);
+  return A.reduce((total, val, idx) => total + val * B[idx], 0);
 }
 
 const A = [1, 4, 2];
