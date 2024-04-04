@@ -64,4 +64,4 @@ function solution2(n, words) {
 const n = 2;
 const words = ["hello", "one", "even", "never", "now", "world", "draw"];
 
-console.log(solution(n, words));
+console.log(solution2(n, words));
