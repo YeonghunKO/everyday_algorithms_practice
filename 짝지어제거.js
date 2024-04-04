@@ -23,11 +23,22 @@ if (match) {
  */
 
 function solution(string) {
-  let isSameChar = true;
+  let isLoop = true;
+  let original = "helloo";
+  let sameChars = false;
+  const regexForSameChar = /(.)\1/g;
 
-  while (isSameChar) {
-    if (string) {
+  while (isLoop) {
+    sameChars = string.match(regexForSameChar);
+    if (sameChars) {
+      sameChars.forEach((char) => {
+        string = string.replaceAll(char, "");
+      });
+      isLoop = true;
+    } else {
+      isLoop = false;
     }
-    // string.
   }
+  return string.length ? 0 : 1;
 }
+console.log(solution("lloo"));
