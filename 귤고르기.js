@@ -19,6 +19,17 @@ pseudo code
 
 function solution(k, tangerine) {
   let answer = 0;
+  const tDict = {};
+
+  tangerine.forEach((tan) => {
+    if (tDict[tan]) {
+      tDict[tan] = tDict[tan] + 1;
+    } else {
+      tDict[tan] = 1;
+    }
+  });
+
+  const sortedDict = Object.values(tDict).sort((a, b) => b - a);
 }
 
 solution(6, [1, 3, 2, 5, 4, 5, 2, 3]);
