@@ -6,6 +6,19 @@
 
 경화가 한 상자에 담으려는 귤의 개수 k와 귤의 크기를 담은 배열 tangerine이 매개변수로 주어집니다. 
 s경화가 귤 k개를 고를 때 크기가 서로 다른 종류의 수의 최솟값을 return 하도록 solution 함수를 작성해주세요.
+
+
+==> [5,4,3,2,1]
+pseudo code
+1. 모든 크기의 귤이 몇개 있는지 dictionary로 구분
+  - 내림차순으로 sort
+2. for문으로 순회하면서 k개를 고를때까지 각 크기의 귤을 세기 
+  - 셀때마다 answer가 증가
+3. k개 만큼 골랐으면 break하고 answer를 리턴
  */
 
-function solution(params) {}
+function solution(k, tangerine) {
+  let answer = 0;
+}
+
+solution(6, [1, 3, 2, 5, 4, 5, 2, 3]);
