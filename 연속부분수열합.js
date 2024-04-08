@@ -8,6 +8,17 @@
 [1, 2, 4, 5, 6, 7, 9, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 22]
 
 [7, 9, 1, 1, 4, 7, 9, 1, 1, 4]
+
+7 , 7+9 , 7+9+1 , ... , 7+9+1+1+4
+9 , 9+1 , 9+1+1 , ... , 9+1+1+4+7
+1 , 1+1 , 1+1+4 , ... , 1+1+4+7+9
+. 
+. 
+4 , 4+1 , 4+7+9 , ... , 4+7+9+1+1
+
+요런식으로 진행이 됨.
+즉, circular에서 , 1인 연속 부분 , 2인 연속 부분
+
 pseudo code
 1. addSum 재귀함수를 while문에서 돌리기
 2. 
@@ -15,17 +26,6 @@ pseudo code
 
 const elements = [7, 9, 1, 1, 4]; // 18
 
-function solution(elements) {
-  const circular = elements.concat(elements);
-  const set = new Set();
-  for (let i = 0; i < elements.length; i++) {
-    let sum = 0;
-    for (let j = 0; j < elements.length; j++) {
-      sum += circular[i + j];
-      set.add(sum);
-    }
-  }
-  return set.size;
-}
+function solution(elements) {}
 
 solution(elements);
