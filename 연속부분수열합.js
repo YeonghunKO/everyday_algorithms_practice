@@ -26,6 +26,12 @@ pseudo code
 
 const elements = [7, 9, 1, 1, 4]; // 18
 
-function solution(elements) {}
+function solution(elements) {
+  const circular = elements.concat(elements);
+
+  for (let i = 0; i < elements.length; i++) {
+    for (let j = 0; j < elements.length; j++) {}
+  }
+}
 
 solution(elements);
