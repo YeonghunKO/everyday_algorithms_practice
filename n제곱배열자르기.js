@@ -13,11 +13,12 @@ n   left  right result
 
      col
   row
-[     0 1 2 3
-   0 [1,2,3,4]
-   1 [2,2,3,4]
-   2 [3,3,3,4]
-   3 [4,4,4,4]
+[     0 1 2 3 4
+   0 [1,2,3,4,5]
+   1 [2,2,3,4,5]
+   2 [3,3,3,4,5]
+   3 [4,4,4,4,5]
+   4 [5,5,5,5,5]
 ]
 
 [
@@ -31,17 +32,21 @@ n   left  right result
 도대체 어떻게 만드는 거야!!!?
 col과 row를 어떻게 섞어야 하는 거야??
 
+row까지는 col+1 면됨
 
  */
 
 function solution(n, left, right) {
   const arr = Array.from({ length: n }, (v1, row) => {
     return Array.from({ length: n }, (v2, col) => {
+      if (col <= row) {
+        return row + 1;
+      }
       return col + 1;
     });
   });
 
-  console.log(arr.flat());
+  return arr.flat().slice(left, right + 1);
 }
 
-solution(3, 2, 5);
+solution(4, 7, 14);
