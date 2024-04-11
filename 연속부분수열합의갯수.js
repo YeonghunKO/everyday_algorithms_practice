@@ -27,11 +27,18 @@ pseudo code
 const elements = [7, 9, 1, 1, 4]; // 18
 
 function solution(elements) {
+  const set = new Set();
+
   const circular = elements.concat(elements);
 
   for (let i = 0; i < elements.length; i++) {
-    for (let j = 0; j < elements.length; j++) {}
+    let subSum = 0;
+    for (let j = 0; j < elements.length; j++) {
+      subSum += circular[i + j];
+      set.add(subSum);
+    }
   }
+  return set.size;
 }
 
 solution(elements);
