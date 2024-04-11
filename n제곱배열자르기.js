@@ -21,6 +21,8 @@ n   left  right result
    4 [5,5,5,5,5]
 ]
 
+==> 1,2,3, 2,2,3 ,3,3,3
+
 [
     [0,0 0,1 0,2]
     [1,0 1,1 1,2]
@@ -37,16 +39,24 @@ row까지는 col+1 면됨
  */
 
 function solution(n, left, right) {
-  const arr = Array.from({ length: n }, (v1, row) => {
-    return Array.from({ length: n }, (v2, col) => {
-      if (col <= row) {
-        return row + 1;
-      }
-      return col + 1;
-    });
-  });
+  const answer = [];
 
-  return arr.flat().slice(left, right + 1);
+  let count = 0;
+  for (let row = 0; row < n; row++) {
+    for (let col = 0; col < n; col++) {
+      count++;
+      if (count >= left + 1 && count <= right + 1) {
+        if (col <= row) {
+          answer.push(row + 1);
+          continue;
+        }
+        answer.push(col + 1);
+      }
+    }
+  }
+
+  console.log(answer);
+  //   return answer.slice(left, right + 1);
 }
 
-solution(4, 7, 14);
+solution(3, 2, 5);
