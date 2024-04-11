@@ -34,26 +34,34 @@ n   left  right result
 도대체 어떻게 만드는 거야!!!?
 col과 row를 어떻게 섞어야 하는 거야??
 
-row까지는 col+1 면됨
+row까지는 col+1 면됨 ㅋㅋㅋ
 
- */
+todo
+1. 포문 하나로 끝내보기!
+- row와 col를 한 번에 구할 수 있는 공식이 있는지 알아내기.
+- 2차원 배열 그림을 보면서 한 번 생각해봐라.
+*/
 
 function solution(n, left, right) {
   const answer = [];
 
   let count = 0;
-  for (let row = 0; row < n; row++) {
-    for (let col = 0; col < n; col++) {
-      count++;
-      if (count >= left + 1 && count <= right + 1) {
-        if (col <= row) {
-          answer.push(row + 1);
-          continue;
-        }
-        answer.push(col + 1);
-      }
-    }
-  }
+
+  // 포문 하나로 끝내보기!!
+  for (let index = 0; index < n * n; index++) {}
+
+  //   for (let row = 0; row < n; row++) {
+  //     for (let col = 0; col < n; col++) {
+  //       count++;
+  //       if (count >= left + 1 && count <= right + 1) {
+  //         if (col <= row) {
+  //           answer.push(row + 1);
+  //           continue;
+  //         }
+  //         answer.push(col + 1);
+  //       }
+  //     }
+  //   }
 
   console.log(answer);
   //   return answer.slice(left, right + 1);
