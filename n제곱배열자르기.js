@@ -22,6 +22,7 @@ n   left  right result
 ]
 
 ==> 1,2,3, 2,2,3 ,3,3,3
+==> 0 1 2  3 4 5  6 7 8 
 
 [
     [0,0 0,1 0,2]
@@ -48,23 +49,39 @@ function solution(n, left, right) {
   let count = 0;
 
   // 포문 하나로 끝내보기!!
-  for (let index = 0; index < n * n; index++) {}
+  for (let index = 0; index < n * n; index++) {
+    if (index >= left + 1 && index <= right + 1) {
+    }
+  }
 
-  //   for (let row = 0; row < n; row++) {
-  //     for (let col = 0; col < n; col++) {
-  //       count++;
-  //       if (count >= left + 1 && count <= right + 1) {
-  //         if (col <= row) {
-  //           answer.push(row + 1);
-  //           continue;
-  //         }
-  //         answer.push(col + 1);
+  // for (let row = 0; row < n; row++) {
+  //   for (let col = 0; col < n; col++) {
+  //     count++;
+  //     if (count >= left + 1 && count <= right + 1) {
+  //       if (col <= row) {
+  //         answer.push(row + 1);
+  //         continue;
   //       }
+  //       answer.push(col + 1);
   //     }
   //   }
+  // }
 
   console.log(answer);
   //   return answer.slice(left, right + 1);
 }
 
+function solution2(n, left, right) {
+  var answer = [];
+
+  for (let i = left; i <= right; i++) {
+    const s = parseInt(i / n);
+    const r = i % n;
+    answer.push(Math.max(s, r) + 1);
+  }
+
+  return answer;
+}
+
 solution(3, 2, 5);
+solution2(3, 2, 5);
