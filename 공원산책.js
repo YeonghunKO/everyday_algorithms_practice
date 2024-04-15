@@ -1,15 +1,17 @@
 /**
  * park              routes              results
-["SOO","OOO","OOO"]	["E 2","S 2","W 1"]	[2,1]
+["SOO","OOO","OOO"]	["E 2","S 2","W 1"]	[2,1] //[row,col]
 ["SOO","OXX","OOO"]	["E 2","S 2","W 1"]	[0,1]
 ["OSO","OOO","OXO","OOO"]  ["E 2","S 3","W 1"]	[0,0]
 
 
 --------------------------------
 
+c r
+1,3 w 1 0,3
 [
-    "OSO",
-    "OOO",
+    "SOO",
+    "XOO",
     "OXO",
     "OOO"
     
@@ -28,11 +30,26 @@ psuedo code
 function solution(park, routes) {
   let startPoint;
 
-  const movePosByDirection = {
-    N: (distance) => [startPoint[0] + distance, startPoint[1]],
-    S: (distance) => [startPoint[0] - distance, startPoint[1]],
+  // [r c]
+  const moveStartPosByDirectionAndDis = {
+    N: (distance) => [startPoint[0] - distance, startPoint[1]],
+    S: (distance) => [startPoint[0] + distance, startPoint[1]],
     E: (distance) => [startPoint[0], startPoint[1] + distance],
     W: (distance) => [startPoint[0], startPoint[1] - distance],
+  };
+
+  const canIMoveInPark = ([row, col]) => {
+    if (!park[row]) {
+      return false;
+    }
+
+    const destCol = park[row].split("")[col];
+
+    if (!destCol || destCol === "X") {
+      return false;
+    }
+
+    return true;
   };
 
   park.forEach((row, idx) => {
@@ -42,25 +59,31 @@ function solution(park, routes) {
     }
   });
 
-  for (let index = 0; index < routes.length; index++) {
-    const [direction, distance] = routes[index].split(" ");
-    const [destRow, destColumn] = movePosByDirection[direction](distance);
+  for (let routeRow = 0; routeRow < routes.length; routeRow++) {
+    let prevStartPoint = startPoint;
+    let isValidPos = false;
 
-    const parkDest = park[destRow];
-    if (!parkDest) {
-      continue;
+    const [direction, distance] = routes[routeRow].split(" ");
+    let step = 1;
+
+    while (step <= +distance) {
+      const [destRow, destColumn] = moveStartPosByDirectionAndDis[direction](1);
+      if (!canIMoveInPark([destRow, destColumn])) {
+        isValidPos = false;
+        break;
+      }
+
+      startPoint = [destRow, destColumn];
+      isValidPos = true;
+      step++;
     }
 
-    const [parkRow, parkColumn] = park[destRow].split("")[destColumn];
-
-    if (parkColumn === "X") {
-      continue;
+    if (!isValidPos) {
+      startPoint = prevStartPoint;
     }
   }
 
-  const destination = movePosByDirection[direction](distance);
-
-  console.log(startPoint);
+  return startPoint;
 }
 
 [0, 0];
@@ -71,4 +94,4 @@ const routes = ["E 2", "S 2", "W 1"];
 const park2 = ["OSO", "OOO", "OXO", "OOO"];
 const routes2 = ["E 2", "S 3", "W 1"];
 
-solution(park2, routes2);
+solution(park, routes);
