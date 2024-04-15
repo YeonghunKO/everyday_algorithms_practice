@@ -27,6 +27,14 @@ psuedo code
 
 function solution(park, routes) {
   let startPoint;
+
+  const movePosByDirection = {
+    N: (distance) => [startPoint[0] + distance, startPoint[1]],
+    S: (distance) => [startPoint[0] - distance, startPoint[1]],
+    E: (distance) => [startPoint[0], startPoint[1] + distance],
+    W: (distance) => [startPoint[0], startPoint[1] - distance],
+  };
+
   park.forEach((row, idx) => {
     const startPosColumn = row.indexOf("S");
     if (startPosColumn >= 0) {
@@ -34,8 +42,28 @@ function solution(park, routes) {
     }
   });
 
+  for (let index = 0; index < routes.length; index++) {
+    const [direction, distance] = routes[index].split(" ");
+    const [destRow, destColumn] = movePosByDirection[direction](distance);
+
+    const parkDest = park[destRow];
+    if (!parkDest) {
+      continue;
+    }
+
+    const [parkRow, parkColumn] = park[destRow].split("")[destColumn];
+
+    if (parkColumn === "X") {
+      continue;
+    }
+  }
+
+  const destination = movePosByDirection[direction](distance);
+
   console.log(startPoint);
 }
+
+[0, 0];
 
 const park = ["SOO", "OOO", "OOO"];
 const routes = ["E 2", "S 2", "W 1"];
