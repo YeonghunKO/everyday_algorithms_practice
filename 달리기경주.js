@@ -14,10 +14,15 @@ pseudo code
 
  */
 
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 const swapElements = (array, index1, index2) => {
-  let temp = array[index1];
+  const temp = array[index1];
+
   array[index1] = array[index2];
   array[index2] = temp;
 };
 
+swapElements(arr, 2, 6);
+console.log(arr);
 function solution(players, callings) {}
