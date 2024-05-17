@@ -5,7 +5,7 @@
 ["aya", "yee", "u", "maa"]	1
 ["ayaye", "uuu", "yeye", "yemawoo", "ayaayaa"]	2
 
-
+ 
 pseudo code
 1. babbling을 looping한다.
  - 글자 하나하나를 replace 한다.
